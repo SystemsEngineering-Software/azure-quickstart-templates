@@ -26,7 +26,7 @@
     "imageOffer": "WindowsServer",
     "imagePublisher": "MicrosoftWindowsServer",
     "windowsOSVersion": "2012-R2-Datacenter",
-    "vmSize": "Standard_D2"
+    "vmSize": "Standard_F2S"
   },
   "resources": [
     {
@@ -56,7 +56,7 @@
                 "id": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('NSGName'))]"
               }
             }
-          },
+          }
         ]
       }
     },
@@ -103,32 +103,6 @@
       }
     },
     {
-      "type": "Microsoft.Network/networkInterfaces",
-      "name": "[concat(variables('VM02Name'), '_NIC')]",
-      "apiVersion": "2016-03-30",
-      "location": "[resourceGroup().location]",
-      "tags": {
-        "displayName": "AppVM01 NIC"
-      },
-      "dependsOn": [
-        "[concat('Microsoft.Network/virtualNetworks/', variables('VNetName'))]"
-      ],
-      "properties": {
-        "ipConfigurations": [
-          {
-            "name": "ipconfig",
-            "properties": {
-              "privateIPAllocationMethod": "Static",
-              "privateIPAddress": "10.0.2.5",
-              "subnet": {
-                "id": "[variables('NIC02SubnetRef')]"
-              }
-            }
-          }
-        ]
-      }
-    },
-    {
       "type": "Microsoft.Compute/virtualMachines",
       "name": "[variables('VM01Name')]",
       "apiVersion": "2016-04-30-preview",
@@ -152,14 +126,17 @@
           "imageReference": {
             "publisher": "[variables('imagePublisher')]",
             "offer": "[variables('imageOffer')]",
-            "sku": "Aligned",
+            "sku": "[variables('windowsOSVersion')]",
             "version": "latest"
           },
           "osDisk": {
-            "caching": "ReadWrite",
-            "createOption": "FromImage",
-            "type": "Premium_LRS"
-          }
+              "name": "[variables('VM01Name')]",
+              "createOption": "fromImage",
+              "managedDisk": {
+                  "storageAccountType": "Premium_LRS"
+                        }
+          },
+            "dataDisks": []
         },
         "networkProfile": {
           "networkInterfaces": [
@@ -238,7 +215,7 @@
               "priority": 140,
               "direction": "Inbound"
             }
-          },
+          }
         ]
       }
     }
