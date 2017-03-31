@@ -1,0 +1,7 @@
+﻿{
+  "itemDisplayName": "DMZ with NSG",
+  "description": "This example will create a network with one server, a VNet with one two subnets, and a Network Security Group.",
+  "summary": "Build a DMZ with Network Security Groups (NSG)",
+  "githubUsername": "adrianwells",
+  "dateUpdated": "2017-03-31"
+}
