@@ -30,7 +30,7 @@
     "imageOffer": "WindowsServer",
     "imagePublisher": "MicrosoftWindowsServer",
     "windowsOSVersion": "2012-R2-Datacenter",
-    "vmSize": "Standard_D3"
+    "vmSize": "Standard_A2"
   },
   "resources": [
     {
