@@ -170,7 +170,7 @@
               "sourceAddressPrefix": "*",
               "destinationAddressPrefix": "*",
               "access": "Allow",
-              "priority": 110,
+              "priority": 100,
               "direction": "Inbound"
             }
           },
@@ -184,21 +184,7 @@
               "sourceAddressPrefix": "Internet",
               "destinationAddressPrefix": "10.0.1.5",
               "access": "Allow",
-              "priority": 120,
-              "direction": "Inbound"
-            }
-          },
-          {
-            "name": "enable_app_rule",
-            "properties": {
-              "description": "Enable [variables('VM01Name')] to [variables('VM02Name')]",
-              "protocol": "*",
-              "sourcePortRange": "*",
-              "destinationPortRange": "*",
-              "sourceAddressPrefix": "10.0.1.5",
-              "destinationAddressPrefix": "10.0.2.5",
-              "access": "Allow",
-              "priority": 130,
+              "priority": 110,
               "direction": "Inbound"
             }
           },
@@ -212,7 +198,7 @@
               "sourceAddressPrefix": "Internet",
               "destinationAddressPrefix": "VirtualNetwork",
               "access": "Deny",
-              "priority": 140,
+              "priority": 120,
               "direction": "Inbound"
             }
           }
